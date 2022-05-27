@@ -1,5 +1,14 @@
 .container {
   padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-top: 1rem;
 }
 
 .main {
