@@ -22,7 +22,7 @@ export default function Home() {
         // // });
         res.items.forEach((itemRef) => {
           getDownloadURL(itemRef).then((url) => {
-            console.log(url);
+            // console.log(url);
             setOrchidURL(url);
           });
         });
