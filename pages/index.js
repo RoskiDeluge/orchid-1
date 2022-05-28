@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { app } from '../firebase/initFirebase';
 import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
 import Head from 'next/head';
@@ -63,6 +64,12 @@ export default function Home() {
           height={1024}
         />
       ))} */}
+      <p>
+        Made by{' '}
+        <Link href="https://github.com/RoskiDeluge/orchid-0">
+          <a className={styles.link}>RD</a>
+        </Link>
+      </p>
     </div>
   );
 }

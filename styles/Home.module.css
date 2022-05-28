@@ -4,6 +4,11 @@
   flex-direction: column;
 }
 
+.link {
+  color: turquoise;
+  text-decoration: underline;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
