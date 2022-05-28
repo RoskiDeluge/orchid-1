@@ -2,7 +2,7 @@ import { db } from '../../firebase/initFirebase';
 import { doc, setDoc, Timestamp } from 'firebase/firestore';
 
 export default function WriteToFirestore() {
-  const docData = {
+  const sampleDocData = {
     stringExample: 'Orchid Aleph 2',
     booleanExample: true,
     numberExample: 3.14159265,
@@ -19,7 +19,7 @@ export default function WriteToFirestore() {
 
   const sendData = () => {
     try {
-      setDoc(doc(db, 'data', 'one'), docData).then(
+      setDoc(doc(db, 'data', 'one'), sampleDocData).then(
         alert('Data was succesfully sent to cloud firestore.')
       );
     } catch (error) {
@@ -28,5 +28,5 @@ export default function WriteToFirestore() {
     }
   };
 
-  return <button onClick={sendData}>Send Data to Firestore</button>;
+  return <button onClick={sendData}>Send Sample Data to Firestore</button>;
 }

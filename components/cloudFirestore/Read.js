@@ -1,7 +1,7 @@
 import { db } from '../../firebase/initFirebase';
 import { collection, getDocs } from 'firebase/firestore';
 
-const ReadFireStore = () => {
+export default function ReadFireStore() {
   const readData = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'data'));
@@ -14,7 +14,5 @@ const ReadFireStore = () => {
     }
   };
 
-  return <button onClick={readData}>Read Data from Firestore</button>;
-};
-
-export default ReadFireStore;
+  return <button onClick={readData}>Read Sample Data from Firestore</button>;
+}

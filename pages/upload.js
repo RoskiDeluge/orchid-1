@@ -6,10 +6,12 @@ import {
   ref,
 } from 'firebase/storage';
 import { useRef, useState } from 'react';
+import WriteToFirestore from '../components/cloudFirestore/Write';
+import ReadFireStore from '../components/cloudFirestore/Read';
+import styles from '../pages/Upload.module.css';
 
 const UploadFile = () => {
   const inputEl = useRef(null);
-  const [image, setImage] = useState('');
   const [value, setValue] = useState(0);
 
   const storage = getStorage(app);
@@ -32,8 +34,8 @@ const UploadFile = () => {
       function complete() {
         alert('Uploaded to firebase storage successfully');
         getDownloadURL(task.snapshot.ref).then((downloadURL) => {
-          // console.log('File available at: ', downloadURL);
-          setImage(downloadURL);
+          console.log('File available at: ', downloadURL);
+          // setImageURL(downloadURL);
         });
       }
     );
@@ -41,8 +43,12 @@ const UploadFile = () => {
 
   return (
     <>
-      <progress value={value} max="100"></progress>
-      <input type="file" onChange={uploadFile} ref={inputEl} />
+      <div className={styles.container}>
+        <WriteToFirestore />
+        <ReadFireStore />
+        <progress value={value} max="100"></progress>
+        <input type="file" onChange={uploadFile} ref={inputEl} />
+      </div>
     </>
   );
 };
