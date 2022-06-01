@@ -23,9 +23,10 @@ export default function Home() {
   // Then use the number to update getDownloadURL()
 
   const getImgURL = async () => {
-    const firstImg = await list(storageRef, { maxResults: 180 });
+    const allImages = await list(storageRef, { maxResults: 361 });
+    // console.log(allImages);
 
-    getDownloadURL(firstImg.items[0])
+    getDownloadURL(allImages.items[0])
       .then((url) => {
         setOrchidURL(url);
       })
@@ -74,3 +75,25 @@ export default function Home() {
     </div>
   );
 }
+
+// export const getStaticProps = () => {
+//   let counter = 0;
+//   while (counter <= 362) {
+//     console.log(counter++);
+//     counter++;
+//   }
+
+//   // const dailyInterval = () => {
+//   //   setInterval(dailyIncrement, 5000);
+//   // };
+
+//   // dailyInterval();
+//   // dailyIncrement();
+
+//   return {
+//     props: {
+//       counter,
+//     },
+//     revalidate: 1,
+//   };
+// };
