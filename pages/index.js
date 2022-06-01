@@ -19,27 +19,7 @@ export default function Home() {
 
   const storageRef = ref(storage, '/orchid470/frames/');
 
-  // const getImgURL = () => {
-  //   listAll(storageRef)
-  //     .then((res) => {
-  //       // // res.prefixes.forEach((folderRef) => {
-  //       // //   console.log(folderRef);
-  //       // //   // All the prefixes under listRef.
-  //       // //   // You may call listAll() recursively on them.
-  //       // // });
-  //       res.items.forEach((itemRef) => {
-  //         getDownloadURL(itemRef).then((url) => {
-  //           // console.log(url[0]);
-  //           setOrchidURL(url);
-  //         });
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
-  // Add function to cycle through numbers 1 through 180 and have it execute every 24 hrs.
+  // Add function to cycle through numbers 1 through 361 and have it execute every 24 hrs.
   // Then use the number to update getDownloadURL()
 
   const getImgURL = async () => {
