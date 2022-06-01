@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { app } from '../firebase/initFirebase';
-import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
+import {
+  getStorage,
+  ref,
+  listAll,
+  getDownloadURL,
+  list,
+} from 'firebase/storage';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
@@ -11,22 +17,37 @@ export default function Home() {
 
   const storage = getStorage(app);
 
-  const storageRef = ref(storage, 'orchid/');
+  const storageRef = ref(storage, '/orchid470/frames/');
 
-  const getImgURL = () => {
-    listAll(storageRef)
-      .then((res) => {
-        // // res.prefixes.forEach((folderRef) => {
-        // //   console.log(folderRef);
-        // //   // All the prefixes under listRef.
-        // //   // You may call listAll() recursively on them.
-        // // });
-        res.items.forEach((itemRef) => {
-          getDownloadURL(itemRef).then((url) => {
-            // console.log(url);
-            setOrchidURL(url);
-          });
-        });
+  // const getImgURL = () => {
+  //   listAll(storageRef)
+  //     .then((res) => {
+  //       // // res.prefixes.forEach((folderRef) => {
+  //       // //   console.log(folderRef);
+  //       // //   // All the prefixes under listRef.
+  //       // //   // You may call listAll() recursively on them.
+  //       // // });
+  //       res.items.forEach((itemRef) => {
+  //         getDownloadURL(itemRef).then((url) => {
+  //           // console.log(url[0]);
+  //           setOrchidURL(url);
+  //         });
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
+  // Add function to cycle through numbers 1 through 180 and have it execute every 24 hrs.
+  // Then use the number to update getDownloadURL()
+
+  const getImgURL = async () => {
+    const firstImg = await list(storageRef, { maxResults: 180 });
+
+    getDownloadURL(firstImg.items[0])
+      .then((url) => {
+        setOrchidURL(url);
       })
       .catch((error) => {
         console.log(error);
