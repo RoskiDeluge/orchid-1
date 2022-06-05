@@ -1,3 +1,4 @@
+import { VscGithubAlt } from 'react-icons/vsc';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { app } from '../firebase/initFirebase';
@@ -49,7 +50,6 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Orchid 0</h1>
       {orchidURL && (
         <Image
           src={orchidURL}
@@ -66,12 +66,14 @@ export default function Home() {
           height={1024}
         />
       ))} */}
-      <p>
-        Made by{' '}
+      <div className={styles.footer}>
+        <p>Orchid 0</p>
         <Link href="https://github.com/RoskiDeluge/orchid-0">
-          <a className={styles.link}>RD</a>
+          <a className={styles.link}>
+            <VscGithubAlt />
+          </a>
         </Link>
-      </p>
+      </div>
     </div>
   );
 }
