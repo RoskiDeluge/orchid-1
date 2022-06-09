@@ -1,33 +1,25 @@
-import { VscGithubAlt } from 'react-icons/vsc';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { app } from '../firebase/initFirebase';
-import {
-  getStorage,
-  ref,
-  listAll,
-  getDownloadURL,
-  list,
-} from 'firebase/storage';
 import Head from 'next/head';
+import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import { VscGithubAlt } from 'react-icons/vsc';
+import { useState, useEffect } from 'react';
+import { app } from '../firebase/initFirebase';
+import { getStorage, ref, getDownloadURL, list } from 'firebase/storage';
+import { getCurrentNumber } from '../helpers/api-util';
 
-export default function Home() {
+export default function Home({ num }) {
   const [orchidURL, setOrchidURL] = useState('');
 
   const storage = getStorage(app);
 
   const storageRef = ref(storage, '/orchid470/frames/');
 
-  // Add function to cycle through numbers 1 through 361 and have it execute every 24 hrs.
-  // Then use the number to update getDownloadURL()
-
   const getImgURL = async () => {
     const allImages = await list(storageRef, { maxResults: 361 });
     // console.log(allImages);
 
-    getDownloadURL(allImages.items[0])
+    getDownloadURL(allImages.items[num])
       .then((url) => {
         setOrchidURL(url);
       })
@@ -78,24 +70,13 @@ export default function Home() {
   );
 }
 
-// export const getStaticProps = () => {
-//   let counter = 0;
-//   while (counter <= 362) {
-//     console.log(counter++);
-//     counter++;
-//   }
+export async function getStaticProps() {
+  const currentNumber = await getCurrentNumber();
 
-//   // const dailyInterval = () => {
-//   //   setInterval(dailyIncrement, 5000);
-//   // };
-
-//   // dailyInterval();
-//   // dailyIncrement();
-
-//   return {
-//     props: {
-//       counter,
-//     },
-//     revalidate: 1,
-//   };
-// };
+  return {
+    props: {
+      num: Number(currentNumber.Items[0].counter_value.N),
+    },
+    revalidate: 60,
+  };
+}
