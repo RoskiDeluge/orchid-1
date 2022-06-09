@@ -29,6 +29,7 @@ export default function Home({ num }) {
 
   useEffect(() => {
     getImgURL();
+    console.log('current number: ', num);
   }, []);
 
   return (
