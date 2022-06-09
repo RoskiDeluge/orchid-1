@@ -4,16 +4,7 @@ export async function getCurrentNumber() {
   );
   const data = await response.json();
 
-  console.log('Data from api-util: ', data);
+  const number = Number(data.Items[0].counter_value.N);
 
-  //   const cards = [];
-
-  //   for (const key in data) {
-  //     cards.push({
-  //       id: key,
-  //       ...data[key],
-  //     });
-  //   }
-  //   return cards;
-  return data;
+  return number;
 }
