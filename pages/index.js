@@ -62,13 +62,12 @@ export default function Home({ num }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const currentNumber = await getCurrentNumber();
 
   return {
     props: {
       num: currentNumber,
     },
-    revalidate: 3600,
   };
 }
