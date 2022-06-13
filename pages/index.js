@@ -13,10 +13,10 @@ export default function Home({ num }) {
 
   const storage = getStorage(app);
 
-  const storageRef = ref(storage, '/orchid470/frames/');
+  const storageRef = ref(storage, '/orchid0/orchid-aleph-raw');
 
   const getImgURL = async () => {
-    const allImages = await list(storageRef, { maxResults: 361 });
+    const allImages = await list(storageRef, { maxResults: 366 });
 
     getDownloadURL(allImages.items[num])
       .then((url) => {
