@@ -51,7 +51,7 @@ export default function Home({ num, poem }) {
         />
       )}
       <div>
-        <p>{poem}</p>
+        <p className={styles.poem}>{poem}</p>
       </div>
       <div className={styles.footer}>
         <p>Orchid 0</p>
