@@ -6,9 +6,9 @@ import { VscGithubAlt } from 'react-icons/vsc';
 import { useState, useEffect } from 'react';
 import { app } from '../firebase/initFirebase';
 import { getStorage, ref, getDownloadURL, list } from 'firebase/storage';
-import { getCurrentNumber } from '../helpers/api-util';
+import { getCurrentNumber, getCurrentPoem } from '../helpers/api-util';
 
-export default function Home({ num }) {
+export default function Home({ num, poem }) {
   const [orchidURL, setOrchidURL] = useState('');
 
   const storage = getStorage(app);
@@ -50,6 +50,9 @@ export default function Home({ num }) {
           height={1024}
         />
       )}
+      <div>
+        <p>{poem}</p>
+      </div>
       <div className={styles.footer}>
         <p>Orchid 0</p>
         <Link href="https://github.com/RoskiDeluge/orchid-0">
@@ -62,12 +65,15 @@ export default function Home({ num }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const currentNumber = await getCurrentNumber();
+  const currentPoem = await getCurrentPoem();
 
   return {
     props: {
       num: currentNumber,
+      poem: currentPoem,
     },
+    revalidate: 86400,
   };
 }

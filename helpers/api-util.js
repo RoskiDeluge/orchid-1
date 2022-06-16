@@ -8,3 +8,22 @@ export async function getCurrentNumber() {
 
   return number;
 }
+
+export async function getCurrentPoem() {
+  const options = {
+    method: 'POST',
+    url: 'https://ha84dgc803.execute-api.us-east-1.amazonaws.com/prod/poems',
+    headers: {},
+  };
+
+  const response = await fetch(
+    'https://ha84dgc803.execute-api.us-east-1.amazonaws.com/prod/poems',
+    options
+  );
+
+  const data = await response.json();
+
+  const poem = data.choices[0].text;
+
+  return poem;
+}
