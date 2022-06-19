@@ -10,9 +10,7 @@ import { getCurrentNumber, getCurrentPoem } from '../helpers/api-util';
 
 export default function Home({ num, poem }) {
   const [orchidURL, setOrchidURL] = useState('');
-
   const storage = getStorage(app);
-
   const storageRef = ref(storage, '/orchid470/frames');
 
   const getImgURL = async () => {
