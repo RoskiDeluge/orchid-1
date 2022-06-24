@@ -8,7 +8,7 @@ export async function getCurrentNumber() {
 
   return number;
 }
-
+// TODO: Need to add content filter function on poemgenerator lambda
 export async function getCurrentPoem() {
   const options = {
     method: 'POST',
