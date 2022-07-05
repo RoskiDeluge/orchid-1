@@ -11,10 +11,10 @@ import { getCurrentNumber, getCurrentPoem } from '../helpers/api-util';
 export default function Home({ num, poem }) {
   const [orchidURL, setOrchidURL] = useState('');
   const storage = getStorage(app);
-  const storageRef = ref(storage, '/orchid470/frames');
+  const storageRef = ref(storage, '/orchid17/pkl17_200');
 
   const getImgURL = async () => {
-    const allImages = await list(storageRef, { maxResults: 361 });
+    const allImages = await list(storageRef, { maxResults: 100 });
 
     getDownloadURL(allImages.items[num])
       .then((url) => {
