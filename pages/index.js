@@ -28,6 +28,7 @@ export default function Home({ num, poem }) {
   useEffect(() => {
     getImgURL();
     console.log('current number: ', num);
+    console.log('current poem: ', poem);
   }, []);
 
   return (

@@ -42,14 +42,8 @@ export async function getCurrentPoem() {
     'Potentially unsafe result generated. Will try again in 24hrs.';
 
   if (filterLabel == '0' || filterLabel == '1') {
-    // res.status(200).json({
-    //   text: '${content_to_classify}',
-    // });
     return poem;
   } else {
-    // res.status(200).json({ text: 'Try again, after modifying the prompt.' });
     return unsafe;
   }
-
-  // return poem;
 }
