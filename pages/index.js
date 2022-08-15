@@ -53,7 +53,7 @@ export default function Home({ num, poem }) {
         <p className={styles.poem}>{poem}</p>
       </div>
       <div className={styles.footer}>
-        <p>Orchid 0</p>
+        <p>Orchid 0 - ({num})</p>
         <Link href="https://github.com/RoskiDeluge/orchid-0">
           <a className={styles.link}>
             <VscGithubAlt />
