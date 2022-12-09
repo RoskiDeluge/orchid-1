@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import sd from '../public/img/sk_ck.png'
+import sd from '../public/img/sd_ck.png'
 import de from '../public/img/oai_ck.png'
 
 export default function Home() {
